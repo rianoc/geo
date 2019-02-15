@@ -15,7 +15,7 @@ Z S2LatLng ll(F x, F y)
 }
 
 Z S2CellId id(F x, F y)
-{ 
+{
     R S2CellId::FromLatLng(ll(x, y));
 }
 
