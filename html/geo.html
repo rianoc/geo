@@ -1,10 +1,14 @@
 <html>
 
 <head>
-   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin="" />
    <script>L_PREFER_CANVAS = true;</script>
-   <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-   <script src="l/leaflet-canvas.js"></script>
+   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+      crossorigin=""></script>
+   <script src="L.CanvasLayer.js"></script>
 </head>
 
 <body><input></input><input></input><input value="-0W"></input><input value="0W"></input><input value=0.01></input>
@@ -28,7 +32,8 @@
 
       var m = L.map('map').setView([51.5, -0.1], 13);
 
-      L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw').addTo(m);
+      var token = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw'
+      L.tileLayer('https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=', token).addTo(m);
 
       m.on('click', function (e) {
          t(0).value = e.latlng;
@@ -50,7 +55,9 @@
          bx[i] = b;
       }
 
-      (o = L.canvasOverlay()).drawing(function (c, p) {
+      (o = L.canvasLayer()).delegate(this).addTo(m);
+
+      function onDrawLayer(p) {
          if (!g.trk) return;
          c = p.canvas.getContext("2d");
          c.clearRect(0, 0, p.canvas.width, p.canvas.height);
@@ -60,13 +67,13 @@
             d = m.latLngToContainerPoint([x, y]);
             c.drawImage(bx[g.trk[i] % nc], d.x - 3, d.y - 3)
          }
-      }).addTo(m);
+      }
 
       ws.onmessage = function (e) {
          console.log(e);
          g = JSON.parse(e.data);
          t(1).value = g.trk.length;
-         o.redraw()
+         o.drawLayer()
       }
    </script>
 
