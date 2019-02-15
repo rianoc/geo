@@ -14,9 +14,14 @@ This is a demo showing basics of geospatial indexing with kdb+.
 to run:
 
 ```bash
-make -C s2
-q q/geo.q
-open html/geo.html
+./build.sh
+./run.sh
+```
+
+Will not compile one Ubuntu 18.04 with openssl 1.1
+
+```
+sudo apt-get install libssl1.0-dev
 ```
 
 This uses the google s2 library (see http://blog.christianperone.com/2015/08/googles-s2-geometry-on-the-sphere-cells-and-hilbert-curve/), as a q shared object.
