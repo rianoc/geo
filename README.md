@@ -5,6 +5,12 @@ Using [geo.zip](https://github.com/KxSystems/kdb/blob/master/e/geo.zip) from Kx 
 
 Expanding on the [geospatial](https://code.kx.com/q/cookbook/geospatial/) example.
 
+Main changes:
+
+* Updated for latest s2geometry
+* Move to openstreetmap.org from mapbox.com
+* Updated to leaflet 1.4
+
 ## Instructions
 
 This is a demo showing basics of geospatial indexing with kdb+.
@@ -18,13 +24,7 @@ to run:
 ./run.sh
 ```
 
-Will not compile one Ubuntu 18.04 with openssl 1.1
-
-```
-sudo apt-get install libssl1.0-dev
-```
-
-This uses the google [s2 library](http://blog.christianperone.com/2015/08/googles-s2-geometry-on-the-sphere-cells-and-hilbert-curve/), as a q shared object.
+This uses the google [s2 library](https://github.com/google/s2geometry), as a q shared object.
 
 When loading data, the function `ids[lats;lons]` is used to map `(lat;lon)` coordinates on a sphere to one-dimensional cell ids. These are stored as 32-bit integers with the `p#` attribute applied.
 
