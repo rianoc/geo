@@ -1,5 +1,5 @@
-ids:`:s2/s2 2:(`ids;2);
-rect:`:s2/s2 2:(`rect;2);
+ids:`:./s2 2:(`ids;2);
+rect:`:./s2 2:(`rect;2);
 
 london:51.5 -0.1;
 n:floor 1e6;
