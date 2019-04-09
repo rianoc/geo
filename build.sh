@@ -1,7 +1,9 @@
 #!/bin/bash -e
 mkdir -p build
 if [ ! -e build/s2geometry ]; then
- git clone https://github.com/google/s2geometry.git build/s2geometry
+ wget https://github.com/google/s2geometry/archive/v0.9.0.zip
+ unzip v0.9.0.zip -d build && rm v0.9.0.zip
+ mv build/s2geometry-0.9.0 build/s2geometry
 fi
 cp Makefile k.cc build/s2geometry/src/
 if [ ! -f build/s2geometry/src/k.h ]; then

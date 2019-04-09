@@ -28,6 +28,7 @@ F=k \
   s2/s2region \
   s2/s2region_coverer \
   s2/third_party/absl/base/internal/raw_logging \
+  s2/third_party/absl/base/internal/throw_delegate \
   s2/third_party/absl/strings/ascii \
   s2/third_party/absl/strings/internal/memutil \
   s2/third_party/absl/strings/numbers \

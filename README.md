@@ -7,7 +7,7 @@ Expanding on the [geospatial](https://code.kx.com/q/cookbook/geospatial/) exampl
 
 Main changes:
 
-* Updated for latest s2geometry
+* Updated for latest s2geometry [v0.9.0](https://github.com/google/s2geometry/releases/tag/v0.9.0)
 * Move to openstreetmap.org from mapbox.com
 * Updated to leaflet 1.4
 
@@ -15,7 +15,7 @@ Main changes:
 
 This is a demo showing basics of geospatial indexing with kdb+.
 
-10 million points are randomly generated around central London and the included html allows querying the data set.
+1 million points are randomly generated around central London and the included html allows querying the data set.
 
 to run:
 
