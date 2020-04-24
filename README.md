@@ -1,15 +1,7 @@
 # geo
-Geospatial kdb+
 
-Using [geo.zip](https://github.com/KxSystems/kdb/blob/master/e/geo.zip) from Kx as a starting point.
-
-Expanding on the [geospatial](https://code.kx.com/v2/kb/geospatial/) example.
-
-Main changes:
-
-* Updated for latest s2geometry [v0.9.0](https://github.com/google/s2geometry/releases/tag/v0.9.0)
-* Move to openstreetmap.org from mapbox.com
-* Updated to leaflet 1.4
+Geospatial kdb+ example using Google S2 library
+This is the source of the content on code.kx.com [geospatial](https://code.kx.com/v2/kb/geospatial/) example.
 
 ## Instructions
 
@@ -24,7 +16,7 @@ to run:
 ./run.sh
 ```
 
-This uses the google [s2 library](https://github.com/google/s2geometry), as a q shared object.
+This uses the Google [S2 library](https://github.com/google/s2geometry), as a shared object.
 
 When loading data, the function `ids[lats;lons]` is used to map `(lat;lon)` coordinates on a sphere to one-dimensional cell ids. These are stored as 32-bit integers with the `p#` attribute applied.
 
@@ -42,3 +34,13 @@ The simple html interface is implemented with openstreetmap and leaflet. In the 
 (the last three are editable filters).
 
 On mouse click, its lat lon coordinates are sent to the server together with the filters over a websocket connection, and the points in the response are plotted on the map. In addition to coordinates, the server returns a trk column, which the client interprets as point colour. This is useful, for example, for plotting GPS tracks.
+
+## Background
+
+This work started from an older [geo.zip](https://github.com/KxSystems/kdb/commit/fda6c37ffd974965dc3786ff8e3cb0946cc15787#diff-6873a97582594f8cbcc7ab4c86c202bf) from Kx.
+
+Main changes from that version:
+
+* Updated for latest s2geometry [v0.9.0](https://github.com/google/s2geometry/releases/tag/v0.9.0)
+* Move to openstreetmap.org from mapbox.com
+* Updated to leaflet 1.4
